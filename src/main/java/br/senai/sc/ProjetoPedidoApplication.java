@@ -8,9 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.senai.sc.domain.Categoria;
+import br.senai.sc.domain.Cidade;
 import br.senai.sc.domain.Estado;
 import br.senai.sc.domain.Produto;
 import br.senai.sc.repositories.CategoriaRepository;
+import br.senai.sc.repositories.CidadeRepository;
 import br.senai.sc.repositories.EstadoRepository;
 import br.senai.sc.repositories.ProdutoRepository;
 
@@ -22,13 +24,16 @@ public class ProjetoPedidoApplication implements CommandLineRunner{
 		SpringApplication.run(ProjetoPedidoApplication.class, args);
 	}
 	@Autowired
-	public CategoriaRepository repo;
+	public CategoriaRepository caterepo;
 	
 	@Autowired
-	public ProdutoRepository repos;
+	public ProdutoRepository prodrepo;
 	
 	@Autowired
-	public EstadoRepository reposi;
+	public EstadoRepository estarepo;
+	
+	@Autowired
+	public CidadeRepository cityrepo;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -40,10 +45,13 @@ public class ProjetoPedidoApplication implements CommandLineRunner{
 		
 		Estado d = new Estado(null, "são José");
 		
-		repo.save(a);
-		repo.save(b);
-		repos.save(c);
-		reposi.save(d);
+		Cidade e = new Cidade(null, "Santa Cataria"); 
+		
+		caterepo.save(a);
+		caterepo.save(b);
+		prodrepo.save(c);
+		estarepo.save(d);
+		cityrepo.save(e);
 	}
 
 }
