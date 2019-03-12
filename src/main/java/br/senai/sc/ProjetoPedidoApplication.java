@@ -8,8 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.senai.sc.domain.Categoria;
+import br.senai.sc.domain.Estado;
 import br.senai.sc.domain.Produto;
 import br.senai.sc.repositories.CategoriaRepository;
+import br.senai.sc.repositories.EstadoRepository;
 import br.senai.sc.repositories.ProdutoRepository;
 
 
@@ -25,6 +27,9 @@ public class ProjetoPedidoApplication implements CommandLineRunner{
 	@Autowired
 	public ProdutoRepository repos;
 	
+	@Autowired
+	public EstadoRepository reposi;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -33,9 +38,12 @@ public class ProjetoPedidoApplication implements CommandLineRunner{
 		
 		Produto c = new Produto(null, "computador", 2000.00);
 		
+		Estado d = new Estado(null, "são José");
+		
 		repo.save(a);
 		repo.save(b);
 		repos.save(c);
+		reposi.save(d);
 	}
 
 }
