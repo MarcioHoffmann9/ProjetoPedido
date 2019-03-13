@@ -24,34 +24,54 @@ public class ProjetoPedidoApplication implements CommandLineRunner{
 		SpringApplication.run(ProjetoPedidoApplication.class, args);
 	}
 	@Autowired
-	public CategoriaRepository caterepo;
+	private CategoriaRepository categoriarepo;
 	
 	@Autowired
-	public ProdutoRepository prodrepo;
+	private ProdutoRepository produtorepo;
 	
-	@Autowired
-	public EstadoRepository estarepo;
+	//@Autowired
+	//private EstadoRepository estadorepo;
 	
-	@Autowired
-	public CidadeRepository cityrepo;
+	//@Autowired
+	//private CidadeRepository citaderepo;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Categoria a = new Categoria(null, "Informatica");
-		Categoria b = new Categoria(null, "Informatica");
+		Categoria cat1 = new Categoria(null, "Informatica");
+		Categoria cat2 = new Categoria(null, "Escritório");
 		
-		Produto c = new Produto(null, "computador", 2000.00);
 		
-		Estado d = new Estado(null, "são José");
 		
-		Cidade e = new Cidade(null, "Santa Cataria"); 
+		Produto p1 = new Produto(null, "computador", 2000.00);
+		Produto p2 = new Produto(null, "Impressora", 800.00);
+		Produto p3 = new Produto(null, "Mouse", 80.00);
 		
-		caterepo.save(a);
-		caterepo.save(b);
-		prodrepo.save(c);
-		estarepo.save(d);
-		cityrepo.save(e);
+		p1.getCategorias().add(cat1);
+		cat1.getProdutos().add(p1);
+		
+		p2.getCategorias().add(cat1);
+		cat1.getProdutos().add(p2);
+		
+		p2.getCategorias().add(cat2);
+		cat2.getProdutos().add(p2);
+		
+		p3.getCategorias().add(cat1);
+		cat1.getProdutos().add(p3);
+		
+		categoriarepo.save(cat1);
+		categoriarepo.save(cat2);
+		
+		produtorepo.save(p1);
+		produtorepo.save(p2);
+		produtorepo.save(p3);
+		
+		
+		
+		
+		
+	
+	
 	}
 
 }
